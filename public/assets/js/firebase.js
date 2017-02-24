@@ -30,9 +30,9 @@ const botonLogin = document.getElementById('botonLogin');
 const botonSignUp = document.getElementById('botonSignUp');
 const botonLogout = document.getElementById('botonLogout');
 
-  				// Añadir Evento login
+  				// añadiendo enventos para el  login
   				botonLogin.addEventListener('click', e => {
-    			//Obtener email y pass
+    			//guardando mail y pass..........
     				const email = textoEmail.value;
     				const pass = textoPassword.value;
     				const auth = firebase.auth();
@@ -42,14 +42,14 @@ const botonLogout = document.getElementById('botonLogout');
   				});
 
 
- 				// Añadir evento signup
+ 				// añadiendo enventos para el signup...........
   				botonSignUp.addEventListener('click', e => {
-    			// Obtener email y pass
-    			// TODO: comprobar que el email sea real
+    			// guardando email y pass.............
+    			
     			const email = textoEmail.value;
     			const pass = textoPassword.value;
    				const auth = firebase.auth();
-    			// Sign in
+    			// Sign in........................
     			const aux2 = auth.createUserWithEmailAndPassword(email, pass);
     			aux2.catch(e => console.log(e.message));
   				});
@@ -59,7 +59,7 @@ const botonLogout = document.getElementById('botonLogout');
     			firebase.auth().signOut();
   				});
 
-  				 // Añadir un listener en tiempo real
+  				 // añadiendo enventos  en tiempo real
    				firebase.auth().onAuthStateChanged( firebaseUser => {
     			if(firebaseUser) {
       			console.log(firebaseUser);
