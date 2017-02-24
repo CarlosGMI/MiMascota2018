@@ -23,6 +23,57 @@ const histMascota = document.getElementById("historiaMascota");
 const enviarDatos = document.getElementById("botonSubmitForm");
 console.log("leí datos");
 
+//Obteniendo datos para El iniciar Sesion.................
+const textoEmail = document.getElementById('textoEmail');
+const textoPassword = document.getElementById('textoPassword');
+const botonLogin = document.getElementById('botonLogin');
+const botonSignUp = document.getElementById('botonSignUp');
+const botonLogout = document.getElementById('botonLogout');
+
+  				// Añadir Evento login
+  				botonLogin.addEventListener('click', e => {
+    			//Obtener email y pass
+    				const email = textoEmail.value;
+    				const pass = textoPassword.value;
+    				const auth = firebase.auth();
+    				// Sign in
+    				const aux = auth.signInWithEmailAndPassword(email, pass);
+    				aux.catch(e => console.log(e.message));   
+  				});
+
+
+ 				// Añadir evento signup
+  				botonSignUp.addEventListener('click', e => {
+    			// Obtener email y pass
+    			// TODO: comprobar que el email sea real
+    			const email = textoEmail.value;
+    			const pass = textoPassword.value;
+   				const auth = firebase.auth();
+    			// Sign in
+    			const aux2 = auth.createUserWithEmailAndPassword(email, pass);
+    			aux2.catch(e => console.log(e.message));
+  				});
+
+
+  				botonLogout.addEventListener('click', e => {
+    			firebase.auth().signOut();
+  				});
+
+  				 // Añadir un listener en tiempo real
+   				firebase.auth().onAuthStateChanged( firebaseUser => {
+    			if(firebaseUser) {
+      			console.log(firebaseUser);
+      			botonLogout.classList.remove('hide');
+      			botonSignUp.classList.remove('hide');
+    			}
+    			else
+    			{
+      			console.log('no logueado');
+      			botonLogout.classList.add('hide');
+      			botonSignUp.classList.add('hide');
+    			}    
+  				});
+
 //Mandando toda la información del formulario
 enviarDatos.addEventListener("click", function()
 {
