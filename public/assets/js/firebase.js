@@ -17,6 +17,9 @@ const nomUsuario = document.getElementById("nombreUsuario");
 const apeUsuario = document.getElementById("apellidoUsuario");
 const teleUsuario = document.getElementById("telefonoUsuario");
 const cedUsuario = document.getElementById("cedulaUsuario");
+const nomMascota = document.getElementById("nombreMascota"); 
+const edMascota = document.getElementById("edadMascota");
+const histMascota = document.getElementById("historiaMascota");
 const enviarDatos = document.getElementById("botonSubmitForm");
 console.log("leí datos");
 
@@ -28,6 +31,9 @@ enviarDatos.addEventListener("click", function()
 	const userApellido = apeUsuario.value;
 	const userTelf = teleUsuario.value;
 	const userid = cedUsuario.value;
+	const petName = nomMascota.value;
+	const petAge = edMascota.value;
+	const petTale = histMascota.value;
 	console.log("entré");
 
 	db.ref('/formulario/participante/'+userid).set(
@@ -36,5 +42,11 @@ enviarDatos.addEventListener("click", function()
 		apellidoParticipante: userApellido,
 		telefonoParticipante: userTelf,
 		cedulaParticipante:	userid
+	});
+	db.ref('/formulario/mascota/'+userid).set(
+	{
+		nombreMascota: petName,
+		edadMascota: petAge,
+		historiaMascota: petTale
 	});
 });

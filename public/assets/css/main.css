@@ -565,19 +565,21 @@ input[type="tel"],
 input[type="url"],
 input[type="password"],
 textarea,
+select
  {
-  display: block;
+  display: inline-block;
   height: 6rem;
   padding: 1.5rem 2rem;
-  border: 0;
+  border: 0.5px solid black;
+  border-radius: 5.5px;
   outline: none;
   vertical-align: middle;
-  color: #444444;
+  color: rgba(0, 0, 0, 0.28);
   font-family: "montserrat-regular", sans-serif;
   font-size: 1.4rem;
   line-height: 3rem;
-  max-width: 50%;
-  background: rgba(255, 255, 255, 0.88);
+  max-width: 100%;
+  background: rgba(0, 137, 123, 0.28);
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
