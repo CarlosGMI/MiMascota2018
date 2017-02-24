@@ -7,28 +7,25 @@
   <meta name="author" content="">
     <!--Diseño responsive-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!--Script de Firebase-->
-  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
   <!--CSS-->
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/vendor.css">  
   <link rel="stylesheet" href="../assets/css/main.css"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-grey.min.css">
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <!--Scripts-->
   <script src="../assets/js/modernizr.js"></script>
   <script src="../assets/js/pace.min.js"></script>
+  <!--Script de Firebase-->
+  <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
 </head>
 <body id="top">
 <header>  
-  	<a id="header-menu-trigger" href="#0">
+    <a id="header-menu-trigger" href="#0">
     <span class="header-menu-icon"></span></a> 
-  	<nav id="menu-nav-wrap">
+    <nav id="menu-nav-wrap">
     <a href="#0" class="close-button" title="close"><span>Cerrar</span></a> 
     <h3>Mi Mascota</h3>  
     <ul class="nav-list">
-    	<li class="current"><a class="smoothscroll" href="index.html" title="">Inicio</a></li>
+      <li class="current"><a class="smoothscroll" href="index.html" title="">Inicio</a></li>
         <li><a class="smoothscroll" href="#about" title="">Nosotros</a></li>
         <li><a class="smoothscroll" href="#portfolio" title="">Noticias</a></li>
         <li><a class="smoothscroll" href="../vistas/login.html" title="">Iniciar sesión</a></li>          
@@ -47,27 +44,63 @@
   </nav> 
 </header>
 <section id="portfolio"><br><br>
-	<h2 style="margin-left: 1cm"><span>Participante</span></h2><hr>
-	<p style="text-align: center">Por favor, ingresa tus datos:</p>
-	<form>
-		<div>
-			<label for="sampleInput" style="margin-left: 1.5cm">Nombre</label>
-        	<input class="full-width" type="text" placeholder="Inserte su nombre aquí." id="nombreParticipante">
-		</div>
-		<div>
-			<label for="sampleInput" style="margin-left: 1.5cm">Apellido</label>
-        	<input class="full-width" type="text" placeholder="Inserte su apellido aquí." id="apellidoParticipante">
-		</div>
-		<div>
-			<label for="sampleInput" style="margin-left: 1.5cm">Número de teléfono</label>
-        	<input class="full-width" type="text" placeholder="Inserte su número de teléfono." id="telefonoParticipante">
-		</div>
-		<div>
-			<label for="sampleInput" style="margin-left: 1.5cm">Número de cédula</label>
-        	<input class="full-width" type="number" placeholder="Inserte su número de cédula." id="telefonoParticipante">
-		</div><br>
-		<input class="button-primary" type="submit" style="margin-left: 9cm" value="¡Participa!">
-	</form>	
+  <h2 style="margin-left: 1cm"><span>Participante</span></h2><hr>
+  <p style="text-align: center">Por favor, ingresa tus datos:</p>
+  <div class="row">
+       <div class="col-six tab-full">
+          	<form>
+            <div>
+                <label for="sampleInput">Nombre</label>
+                <input class="full-width" type="text" placeholder="" id="nombreUsuario">
+            </div>
+            <div>
+                <label for="sampleInput">Apellido</label>
+                <input class="full-width" type="text" placeholder="" id="apellidoUsuario">
+            </div>
+            <div>
+                <label for="sampleInput">Teléfono</label>
+                <input class="full-width" type="text" placeholder="" id="telefonoUsuario">
+            </div>
+            <div>
+                <label for="sampleInput">Cédula</label>
+                <input class="full-width" type="number" placeholder="" id="cedulaUsuario">
+            </div>
+             
+            <input class="button-primary" id="botonSubmitForm" type="submit" value="¡Participa!">
+
+         </form>              
+
+       </div>
+
+       <div class="col-six tab-full">
+
+        <h3>Alert Boxes</h3> 
+
+        <br>
+              
+            <div class="alert-box ss-error hideit">
+            <p>Error Message. Your Message Goes Here.</p>
+            <i class="fa fa-times close"></i>
+          </div><!-- /error -->
+              
+          <div class="alert-box ss-success hideit">
+            <p>Success Message. Your Message Goes Here.</p>
+            <i class="fa fa-times close"></i>
+          </div><!-- /success -->
+              
+          <div class="alert-box ss-info hideit">
+             <p>Info Message. Your Message Goes Here.</p>
+             <i class="fa fa-times close"></i>
+          </div><!-- /info -->
+              
+          <div class="alert-box ss-notice hideit">
+            <p>Notice Message. Your Message Goes Here.</p>
+            <i class="fa fa-times close"></i>
+          </div><!-- /notice -->
+            
+       </div>          
+
+    </div> <!-- end row -->
 </section>
 <footer>
     <div class="footer-main">
