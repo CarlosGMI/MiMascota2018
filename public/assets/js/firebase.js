@@ -97,7 +97,7 @@ if(fileButton)
 			    	if(cont == 1)
 			    	{
 			    		console.log("Subiendo imagen 1");
-			    		db.ref('formulario/fotosMascota/'+idParticipante).update(
+			    		db.ref('/formulario/fotosMascota/'+idParticipante).update(
 			    		{
 			    			nombreImagen1: file.name,
 			    			urlImg1: downloadURL
@@ -106,7 +106,7 @@ if(fileButton)
 			    	else if(cont == 2)
 			    	{
 			    		console.log("Subiendo imagen 2");
-			    		db.ref('formulario/fotosMascota/'+idParticipante).update(
+			    		db.ref('/formulario/fotosMascota/'+idParticipante).update(
 			    		{
 			    			nombreImagen2: file.name,
 			    			urlImg2: downloadURL
@@ -115,7 +115,7 @@ if(fileButton)
 			    	else if(cont == 3)
 			    	{
 			    		console.log("Subiendo imagen 3");
-			    		db.ref('formulario/fotosMascota/'+idParticipante).update(
+			    		db.ref('/formulario/fotosMascota/'+idParticipante).update(
 			    		{
 			    			nombreImagen3: file.name,
 			    			urlImg3: downloadURL

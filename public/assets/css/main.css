@@ -434,7 +434,7 @@ img.pull-left {
  * tables - (_document-setup.scss)  
  * ------------------------------------------------------------------- */
 table {
-  border-width: 0;
+  border-width: 1%;
   width: 100%;
   max-width: 100%;
   font-family: "librebaskerville-regular", sans-serif;
