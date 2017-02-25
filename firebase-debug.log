@@ -1,15 +1,15 @@
 [debug] ----------------------------------------------------------------------
-[debug] Command:      C:\Program Files\nodejs\node.exe C:\Users\Eduardo\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] Command:      C:\Program Files\nodejs\node.exe C:\Users\Hogar\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
 [debug] CLI Version:  3.3.0
 [debug] Platform:     win32
-[debug] Node Version: v6.10.0
-[debug] Time:         Fri Feb 24 2017 20:08:03 GMT-0430 (Hora estándar de Venezuela)
+[debug] Node Version: v4.5.0
+[debug] Time:         Sat Feb 25 2017 13:11:14 GMT-0430 (Hora estándar de Venezuela)
 [debug] ----------------------------------------------------------------------
 [debug] 
-[warn] !  JSON parsing error while trying to load C:\Users\Eduardo\Documents\Proyect_GitHub\MiMascota2018\.firebaserc
+[warn] !  JSON parsing error while trying to load C:\Users\Hogar\MiMascota2018\MiMascota2018\.firebaserc
 [info] Starting Firebase development server...
 [info] 
-[info] Project Directory: C:\Users\Eduardo\Documents\Proyect_GitHub\MiMascota2018
+[info] Project Directory: C:\Users\Hogar\MiMascota2018\MiMascota2018
 [info] Public Directory: public
 [info] 
 [info] Server listening at: http://localhost:5000

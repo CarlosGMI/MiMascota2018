@@ -12,10 +12,14 @@
   <!--CSS-->
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/vendor.css">  
-  <link rel="stylesheet" href="../assets/css/main.css">  
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/sweetalert.css"> 
   <!--Scripts-->
   <script src="../assets/js/modernizr.js"></script>
   <script src="../assets/js/pace.min.js"></script>
+  <script src="../assets/js/sweetalert-dev.js"></script>
+  <script src="../assets/js/sweetalert.min.js"></script>
+  <script src="../assets/js/jquery.js"></script>
 </head>
 <body id="top">
 <!--Header-->
@@ -30,13 +34,12 @@
     <a href="#0" class="close-button" title="close"><span>Cerrar</span></a> 
       <h3>Mi Mascota</h3>  
       <ul class="nav-list">
-        <li class="current">
-        <a class="button full-width3" href="index.html" title="">Inicio</a></li>
+        <li><a href="/" title="">Inicio</a></li>
         <li><a class="smoothscroll" href="index.html" title="">Nosotros</a></li>
         <li><a class="smoothscroll" href="index.html" title="">Noticias</a></li>
-        <li><a id = "IniciarS" href="IniciarSe.html" title="">Iniciar sesión</a></li>   
-        <li><a id = "Perfil" href="perfil.html" title="">perfil</a></li>   
-             
+        <div id="menuIniciarS"><li><a id = "IniciarS" href="IniciarSe.html" title="">Iniciar sesión</a></li></div>
+        <div id="menuPerfil"><li><a id="Perfil" href="perfil.html" title="">Perfil</a></li></div>
+        <div id="menuLogout"><li><a id="botonLogout">Cerrar sesión</a></li></div>               
       </ul> 
       <ul class="header-social-list">
             <li>
@@ -64,9 +67,9 @@
                <!--Botones y campos-->
                 <input id="textoEmail" type="email" placeholder="Email">
                 <input id="textoPassword" type="password" placeholder="Contraseña">
-                <button id = "botonLogin"  class="btn btn-action">Login</button>
-                <button id = "botonSignUp" class="btn btn-action hide">Registrarse</button>
-                <button id = "botonLogout" class="btn btn-action hide">Logout</button>
+                <div id="loginButton"><button id = "botonLogin"  class="btn btn-action">Login</button></div>
+                <div id="registrarButton"><button id = "botonSignUp" class="btn btn-action">Registrar</button>
+                <!--<button id = "botonLogout" class="btn btn-action hide">Logout</button>-->
                 </div>
             </div>              
           </div> 

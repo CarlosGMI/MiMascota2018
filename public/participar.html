@@ -12,9 +12,13 @@
   <link rel="stylesheet" href="../assets/css/vendor.css">  
   <link rel="stylesheet" href="../assets/css/main.css"> 
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" href="../assets/css/sweetalert.css"> 
   <!--Scripts-->
   <script src="../assets/js/modernizr.js"></script>
   <script src="../assets/js/pace.min.js"></script>
+  <script src="../assets/js/sweetalert-dev.js"></script>
+  <script src="../assets/js/sweetalert.min.js"></script>
+  <script src="../assets/js/jquery.js"></script>
   <!--Script de Firebase-->
   <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
 </head>
@@ -26,10 +30,12 @@
     <a href="#0" class="close-button" title="close"><span>Cerrar</span></a> 
     <h3>Mi Mascota</h3>  
     <ul class="nav-list">
-      <li class="current"><a class="button full-width3" href="index.html" title="">Inicio</a></li>
+      <li><a href="/" title="">Inicio</a></li>
         <li><a class="smoothscroll" href="#about" title="">Nosotros</a></li>
         <li><a class="smoothscroll" href="#portfolio" title="">Noticias</a></li>
-       <li><a id = "IniciarS" href="IniciarSe.html" title="">Iniciar sesión</a></li>            
+        <div id="menuIniciarS"><li><a id = "IniciarS" href="IniciarSe.html" title="">Iniciar sesión</a></li></div>
+        <div id="menuPerfil"><li><a id="Perfil" href="perfil.html" title="">Perfil</a></li></div>
+        <div id="menuLogout"><li><a id="botonLogout" href="/">Cerrar sesión</a></li></div>              
     </ul> 
     <ul class="header-social-list">
         <li>
@@ -90,10 +96,10 @@
         <div>
           <label for="sampleInput">Fotos de mascota *</label>
           <progress value="0" max="100" id="uploader">0%</progress>
-          <input type="file" value="upload" id="fileButton" />
+          <div id="botonSubir"><input type="file" value="upload" id="fileButton" /></div>
         </div>
     </div><br><br>
-    <input class="button-primary" id="botonSubmitForm" type="submit" value="¡Participa!" style="margin-left: 11.5cm">
+    <div id="botonParticipar"><input class="button-primary" id="botonSubmitForm" type="submit" value="¡Participa!" style="margin-left: 11.5cm"></div>
   </form>          
   </div> 
   <br>

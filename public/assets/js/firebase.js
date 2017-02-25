@@ -35,6 +35,33 @@ var uploader = document.getElementById('uploader');
 var fileButton = document.getElementById('fileButton');
 var cont = 0;
 console.log("leí datos");
+console.log(window.location.pathname);
+
+if(window.location.pathname == '/' || window.location.pathname == '/IniciarSe.html' || window.location.pathname == '/index.html' || window.location.pathname == '/IniciarSe.html' || window.location.pathname == '/participando.html' || window.location.pathname == '/participar.html' || window.location.pathname == '/perfil.html')
+{	
+	console.log("Estoy en el index");
+	alIniciar();
+	function alIniciar()
+	{
+		auth.onAuthStateChanged(function(user)
+		{
+			if(user)
+			{
+				console.log("Admin logeado");
+				$("#botonParticipar").hide();
+				$("#botonSubir").hide();
+			}
+			else
+			{
+				console.log("Admin no logeado");
+				$("#menuPerfil").hide();
+				$("#registrarButton").hide();
+				$("#menuLogout").hide();
+				console.log("escondí los botones");
+			}
+		});
+	}
+}
 
 if(fileButton)
 {
@@ -46,11 +73,12 @@ if(fileButton)
 	    }
 	    else
 	    {
-	    	cont = cont++;
+	    	var idParticipante = cedUsuario.value;
+	    	cont = cont + 1;
 		    if(cont<=3)
 		    {	
 		    	console.log("Obteniendo el archivo");
-		    	//Obtener archivo
+		    	//Obtener archivo y almacenarlo en el storage
 			    var file = e.target.files[0];
 			    var storageRef = firebase.storage().ref('fotosMascota/'+idParticipante+'/'+file.name);
 			    var task = storageRef.put(file);
@@ -62,8 +90,39 @@ if(fileButton)
 			    },
 			    function error(err){
 			    },
-			    function complete(){
+			    function complete()
+			    {
+			    	var downloadURL = task.snapshot.downloadURL;
+			    	//La foto será cargada en la base de datos
+			    	if(cont == 1)
+			    	{
+			    		console.log("Subiendo imagen 1");
+			    		db.ref('formulario/fotosMascota/'+idParticipante).update(
+			    		{
+			    			nombreImagen1: file.name,
+			    			urlImg1: downloadURL
+			    		});
+			    	}
+			    	else if(cont == 2)
+			    	{
+			    		console.log("Subiendo imagen 2");
+			    		db.ref('formulario/fotosMascota/'+idParticipante).update(
+			    		{
+			    			nombreImagen2: file.name,
+			    			urlImg2: downloadURL
+			    		});
+			    	}	
+			    	else if(cont == 3)
+			    	{
+			    		console.log("Subiendo imagen 3");
+			    		db.ref('formulario/fotosMascota/'+idParticipante).update(
+			    		{
+			    			nombreImagen3: file.name,
+			    			urlImg3: downloadURL
+			    		});
+			    	}
 			    });
+			    console.log("contador "+cont);
 			}
 			else
 			{
@@ -86,21 +145,76 @@ if(botonLogin)
 	    	var errorMessage = error.message;
 	    	if(errorCode == 'auth/wrong-password')
 	    	{
-	    		window.alert("Contraseña equivocada! Vuelve a ingresar.");
-	    	}
-	    	else if(errorCode == 'auth/user-not-found')
+	    		//window.alert("Contraseña equivocada! Vuelve a ingresar.");
+	    		swal(
+	    		{
+					title: "Oops...",
+				  	text: "Contraseña equivocada!",
+				  	type: "warning",
+				  	confirmButtonText: "OK",
+				  	closeOnConfirm: false,
+				  	closeOnCancel: false
+				}),
+				function(isConfirm)
+				{	
+					window.location.replace("IniciarSe.html");
+  				}
+			}
+			else if(errorCode == 'auth/user-not-found')
 	    	{
-	    		window.alert("Tu correo electrónico no se encuentra registrado.");
+	    		//window.alert("Tu correo electrónico no se encuentra registrado.");
+	    		swal(
+	    		{
+					title: "Oops...",
+				  	text: "Usuario no encontrado!",
+				  	type: "warning",
+				  	confirmButtonText: "OK",
+				  	closeOnConfirm: false,
+				  	closeOnCancel: false
+				}),
+				function(isConfirm)
+				{	
+					window.location.replace("IniciarSe.html");
+  				}
 	    	}
 	    	else
 	    	{
-	    		window.alert("Error de autenticación");
+	    		//window.alert("Error de autenticación");
+	    		swal(
+	    		{
+					title: "Oops...",
+				  	text: "Error de autenticación",
+				  	type: "warning",
+				  	confirmButtonText: "OK",
+				  	closeOnConfirm: false,
+				  	closeOnCancel: false
+				}),
+				function(isConfirm)
+				{	
+					window.location.replace("IniciarSe.html");
+  				}
 	    	}
-	    }).then(function()
-	    {
-	    	console.log("Me estoy logeando");
-	    	window.location.replace("index.html");
-	    });	
+	    });
+	    auth.onAuthStateChanged(function(user)
+		{
+			if(user)
+			{
+				$("#menuPerfil").show();
+				$("#registrarButton").show();
+				$("#menuLogout").show();
+				$("#loginButton").hide();
+				$("#menuIniciarS").hide();
+				$("#botonParticipar").hide();
+				$("#botonSubir").hide();
+				swal(
+	    		{
+					title: "Has iniciado sesión correctamente",
+				  	timer: 1000,
+				  	showConfirmButton: false
+				});
+				console.log("Admin logeado");
+			}
+		});
 	});
 }
 
@@ -114,6 +228,12 @@ if(botonSignUp)
 	    auth.createUserWithEmailAndPassword(email, pass).then(function()
 	    {
 	    	console.log("Me estoy registrando");
+	    	swal(
+	    	{
+				title: "Registrado correctamente!",
+			  	timer: 1000,
+			  	showConfirmButton: false
+			});
 	    	window.location.replace("index.html");
 	    });
 	});
@@ -124,65 +244,63 @@ if(botonLogout)
 {
 	botonLogout.addEventListener('click', function() 
 	{
-	    auth().signOut();
+	    auth.signOut();
+	    $("#menuLogout").hide();
 	    console.log("Cerré sesión");
+	    swal(
+	    {
+			title: "Sesión finalizada con éxito.",
+			timer: 1000,
+			showConfirmButton: false
+		});
 	    window.location.replace("index.html");
 	});
 }
-
-//Eventos en tiempo real
-//auth().onAuthStateChanged(function(user)
-//{
-//	if(user)
-//	{
-//		console.log("Admin logeado");
-		/*console.log(firebaseUser);
-      	botonLogout.classList.remove('hide');
-      	botonSignUp.classList.remove('hide');
-      	IniciarS.classList.add('hide');
-      	Perfil.classList.remove('hide');*/
-//	}
-//	else
-//	{
-//		console.log("Admin no logeado")
-		/*console.log('no logueado');
-      	botonLogout.classList.add('hide');
-      	botonSignUp.classList.add('hide');
-      	IniciarS.classList.remove('hide');
-        Perfil.classList.add('hide');*/
-//	}
-//});  */
 
 //Mandando toda la información del formulario
 if(enviarDatos)
 {
 	enviarDatos.addEventListener("click", function()
 	{
-		//Obteniendo el valor de los inputs en el formulario de participación
-		const userName = nomUsuario.value;
-		const userApellido = apeUsuario.value;
-		const userTelf = teleUsuario.value;
-		const userid = cedUsuario.value;
-		const petName = nomMascota.value;
-		const petAge = edMascota.value;
-		const petTale = histMascota.value;
-		console.log("entré");
+		if(cont == 3)
+		{	
+			//Obteniendo el valor de los inputs en el formulario de participación
+			const userName = nomUsuario.value;
+			const userApellido = apeUsuario.value;
+			const userTelf = teleUsuario.value;
+			const userid = cedUsuario.value;
+			const petName = nomMascota.value;
+			const petAge = edMascota.value;
+			const petTale = histMascota.value;
+			console.log("entré");
 
-		db.ref('/formulario/participante/'+userid).set(
+			db.ref('/formulario/participante/'+userid).set(
+			{
+				nombreParticipante: userName,
+				apellidoParticipante: userApellido,
+				telefonoParticipante: userTelf,
+				cedulaParticipante:	userid
+			});
+			db.ref('/formulario/mascota/'+userid).set(
+			{
+				nombreMascota: petName,
+				edadMascota: petAge,
+				historiaMascota: petTale
+			}).then(function()
+			{
+				window.location.replace("participando.html");
+			});
+		}
+		else
 		{
-			nombreParticipante: userName,
-			apellidoParticipante: userApellido,
-			telefonoParticipante: userTelf,
-			cedulaParticipante:	userid
-		});
-		db.ref('/formulario/mascota/'+userid).set(
-		{
-			nombreMascota: petName,
-			edadMascota: petAge,
-			historiaMascota: petTale
-		}).then(function()
-		{
-			window.location.replace("participando.html");
-		});
+			//window.alert("Sube 3 fotos de tu mascota!")
+			console.log("Debo subir 3 fotos");
+			swal(
+	    	{
+				title: "Sube 3 fotos de tu mascota!",
+			  	timer: 1000,
+			  	showConfirmButton: false
+			});
+		}
 	});
 }
