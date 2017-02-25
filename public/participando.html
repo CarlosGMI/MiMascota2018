@@ -26,10 +26,10 @@
     <a href="#0" class="close-button" title="close"><span>Cerrar</span></a> 
     <h3>Mi Mascota</h3>  
     <ul class="nav-list">
-      <li class="current"><a class="button full-width3" href="index.html" title="">Inicio</a></li>
+      <li class="current"><a class="smoothscroll" href="index.html" title="">Inicio</a></li>
         <li><a class="smoothscroll" href="#about" title="">Nosotros</a></li>
         <li><a class="smoothscroll" href="#portfolio" title="">Noticias</a></li>
-       <li><a id = "IniciarS" href="IniciarSe.html" title="">Iniciar sesión</a></li>            
+        <li><a class="smoothscroll" href="../vistas/login.html" title="">Iniciar sesión</a></li>          
     </ul> 
     <ul class="header-social-list">
         <li>
@@ -44,59 +44,9 @@
     </ul>   
   </nav> 
 </header>
-<section id="portfolio"><br><br>
-  <div class="row">
-    <div class="col-six tab-full">
-      <h2 style="margin-left: 2.5cm"><span>Participante</span></h2><hr>
-    </div>
-    <div class="col-six tab-full">
-      <h2 style="margin-left: 3cm"><span>Mascota</span></h2><hr>
-    </div>
-  </div>
-  <p style="margin-left: 10.5cm">Por favor, ingresa los datos:</p>
-  <div class="row">
-    <form name="formularioParticipacion">
-      <div class="col-six tab-full">
-          <div>
-            <label for="sampleInput">Nombre *</label>
-            <input class="full-width" type="text" placeholder="" id="nombreUsuario" required>
-            </div>
-          <div>
-            <label for="sampleInput">Apellido *</label>
-            <input class="full-width" type="text" placeholder="" id="apellidoUsuario" required>
-          </div>
-          <div>
-            <label for="sampleInput">Teléfono *</label>
-            <input class="full-width" type="text" placeholder="" id="telefonoUsuario" required>
-          </div>
-          <div>
-            <label for="sampleInput">Cédula *</label>
-            <input class="full-width" type="number" placeholder="" id="cedulaUsuario" required>
-          </div>
-      </div>
-      <div class="col-six tab-full">
-        <div>
-          <label for="sampleInput">Nombre de mascota *</label>
-          <input class="full-width" type="text" placeholder="" id="nombreMascota" required>
-          </div>
-        <div>
-          <label for="sampleInput">Edad aproximada *</label>
-          <input class="full-width" type="number" placeholder="" id="edadMascota" required>
-        </div>
-        <div>
-          <label for="sampleInput">Historia entretenida</label>
-          <textarea class="full-width" placeholder="Escribe una historia entretenida de tu mascota" id="historiaMascota" maxlength="400"></textarea>
-        </div>
-        <div>
-          <label for="sampleInput">Fotos de mascota *</label>
-          <progress value="0" max="100" id="uploader">0%</progress>
-          <input type="file" value="upload" id="fileButton" />
-        </div>
-    </div><br><br>
-    <input class="button-primary" id="botonSubmitForm" type="submit" value="¡Participa!" style="margin-left: 11.5cm">
-  </form>          
-  </div> 
-  <br>
+<section id="portfolio"><br><br><br><br><br>
+	<h1 style="text-align: center">¡Bien hecho!</h1>
+	<h2 style="text-align: center">Su mascota está participando en el Concurso Mi Mascota 2018</h2>
 </section>
 <footer>
     <div class="footer-main">
@@ -148,7 +98,6 @@
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/angular.js"></script>
-<script src="../assets/js/formulario.js"></script>
 <!--Script de Firebase-->
 <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
 <script src="../assets/js/firebase.js"></script>
