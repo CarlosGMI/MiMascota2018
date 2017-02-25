@@ -34,7 +34,12 @@
 @import url("micons/micons.css");
 @import url("fonts.css");
 
-
+#uploader {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 50%;
+        margin-bottom: 10px;
+      }
 /* ===================================================================
  *  02. base style overrides - (_document-setup)
  *

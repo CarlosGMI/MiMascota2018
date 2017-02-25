@@ -31,13 +31,42 @@ const botonSignUp = document.getElementById('botonSignUp');
 const botonLogout = document.getElementById('botonLogout');
 const IniciarS = document.getElementById('IniciarS');
 const Perfil = document.getElementById('Perfil');
+// Obtener Elementos Para subir Archivos.............
+      var uploader = document.getElementById('uploader');
+      var fileButton = document.getElementById('fileButton');
+
+
+
+        // Aki Ocurre la Seleccion del archivo................
+      fileButton.addEventListener('change', function(e) {
+        //Obtener archivo
+        var file = e.target.files[0];
+        // Crear un storage ref
+        var storageRef = firebase.storage().ref('mis_fotos/' + file.name);
+         // Subir archivo
+        var task = storageRef.put(file);
+         // Actualizar barra progreso
+        task.on('state_changed',
+          function progress(snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
+          },
+           function error(err) {
+          },
+          function complete() {
+          }
+          )
+      });
+
+//hata aki se selecciona las imageness..........................................
+
   				// añadiendo enventos para el  login
   				botonLogin.addEventListener('click', e => {
     			//guardando mail y pass..........
     				const email = textoEmail.value;
     				const pass = textoPassword.value;
     				const auth = firebase.auth();
-    				href="perfil.html";
+
     				// Sign in
     				const aux = auth.signInWithEmailAndPassword(email, pass);
     				aux.catch(e => console.log(e.message));   

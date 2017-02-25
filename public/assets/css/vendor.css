@@ -20,6 +20,13 @@
  * Copyright (c) 2015 Daniel Eden
  * ===================================================================
  */
+#uploader {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 50%;
+        margin-bottom: 10px;
+      }
+ 
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
