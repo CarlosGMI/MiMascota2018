@@ -29,13 +29,15 @@ const textoPassword = document.getElementById('textoPassword');
 const botonLogin = document.getElementById('botonLogin');
 const botonSignUp = document.getElementById('botonSignUp');
 const botonLogout = document.getElementById('botonLogout');
-
+const IniciarS = document.getElementById('IniciarS');
+const Perfil = document.getElementById('Perfil');
   				// añadiendo enventos para el  login
   				botonLogin.addEventListener('click', e => {
     			//guardando mail y pass..........
     				const email = textoEmail.value;
     				const pass = textoPassword.value;
     				const auth = firebase.auth();
+    				href="perfil.html";
     				// Sign in
     				const aux = auth.signInWithEmailAndPassword(email, pass);
     				aux.catch(e => console.log(e.message));   
@@ -65,12 +67,16 @@ const botonLogout = document.getElementById('botonLogout');
       			console.log(firebaseUser);
       			botonLogout.classList.remove('hide');
       			botonSignUp.classList.remove('hide');
+      			IniciarS.classList.add('hide');
+      			Perfil.classList.remove('hide');
     			}
     			else
     			{
       			console.log('no logueado');
       			botonLogout.classList.add('hide');
       			botonSignUp.classList.add('hide');
+      			IniciarS.classList.remove('hide');
+        		Perfil.classList.add('hide');
     			}    
   				});
 
