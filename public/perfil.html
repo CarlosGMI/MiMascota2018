@@ -152,8 +152,8 @@
 <!--Script que llena la tabla de los formularios respondidos-->
 <script>
   var query = firebase.database().ref('/formulario/participante/').orderByKey();
-  var query2 = firebase.database().ref('/formulario/mascota/').orderByKey();
-  var query3 = firebase.database().ref('/formulario/fotosMascota/').orderByKey();
+  //var query2 = firebase.database().ref('/formulario/mascota/').orderByKey();
+  //var query3 = firebase.database().ref('/formulario/fotosMascota/').orderByKey();
   query.once("value").then(function(snapshot)
   {
     snapshot.forEach(function(childSnapshot)
@@ -162,25 +162,30 @@
       var cedulaP = childSnapshot.child("cedulaParticipante").val();
       var nombreP = childSnapshot.child("nombreParticipante").val();
       var telfP = childSnapshot.child("telefonoParticipante").val();
+      var idP = childSnapshot.child("cedulaParticipante").child(cedulaP).key;
+      var query2 = firebase.database().ref("/formulario/mascota/"+idP);
       query2.once("value").then(function(snapshot)
       {
         snapshot.forEach(function(childSnapshot)
         {
-          var edadM = childSnapshot.child("edadMascota").val();
-          var historiaM = childSnapshot.child("historiaMascota").val();
-          var nombreM = childSnapshot.child("nombreMascota").val();
+          var edadM = snapshot.child("edadMascota").val();
+          var historiaM = snapshot.child("historiaMascota").val();
+          var nombreM = snapshot.child("nombreMascota").val()
+          var query3 = firebase.database().ref("/formulario/fotosMascota/"+idP);
           query3.once("value").then(function(snapshot)
           {
             snapshot.forEach(function(childSnapshot)
             {
-              var url1 = childSnapshot.child("urlImg1").val();
-              var url2 = childSnapshot.child("urlImg2").val();
-              var url3 = childSnapshot.child("urlImg3").val();
+              var url1 = snapshot.child("urlImg1").val();
+              var url2 = snapshot.child("urlImg2").val();
+              var url3 = snapshot.child("urlImg3").val();
               //Llenamos la tabla haciendo un append con la nueva fila
               $("#tablaFormularios").append('<tr><td>'+nombreP+'</td><td>'+apellidoP+'</td><td>'+telfP+'</td><td>'+cedulaP+'</td><td>'+nombreM+'</td><td>'+edadM+'</td><td>'+historiaM+'</td><td>'+url1+'</td><td>'+url2+'</td><td>'+url3+'</td></tr>');
               console.log("Hice todos los queries");
+              return true;
             });
-          });  
+          }); 
+          return true;
         });
       });
     });
